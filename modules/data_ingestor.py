@@ -1,9 +1,6 @@
 import pandas as pd
-# import numpy as np
 import matplotlib.pyplot as plt
-# import matplotlib.dates as mdates
 import os
-# import sys
 from config import (
     REQUIRED_COLUMNS, TIMESTAMP_CANDIDATES,
     MAX_SINGLE_BAR_MOVE_PCT, MIN_PRICE,
@@ -11,9 +8,7 @@ from config import (
 )
 
 
-# ─────────────────────────────────────────────
 # SECTION 1: LOADING
-# ─────────────────────────────────────────────
 
 def load_csv(filepath: str) -> pd.DataFrame:
     """
@@ -33,9 +28,7 @@ def load_csv(filepath: str) -> pd.DataFrame:
     return df
 
 
-# ─────────────────────────────────────────────
 # SECTION 2: COLUMN STANDARDIZATION
-# ─────────────────────────────────────────────
 
 def standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -72,9 +65,7 @@ def standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ─────────────────────────────────────────────
 # SECTION 3: TIMESTAMP PARSING & SORTING
-# ─────────────────────────────────────────────
 
 def parse_and_sort_timestamps(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -103,9 +94,7 @@ def parse_and_sort_timestamps(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ─────────────────────────────────────────────
 # SECTION 4: TYPE ENFORCEMENT
-# ─────────────────────────────────────────────
 
 def enforce_numeric_types(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -122,9 +111,7 @@ def enforce_numeric_types(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ─────────────────────────────────────────────
 # SECTION 5: MISSING VALUE HANDLING
-# ─────────────────────────────────────────────
 
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -152,9 +139,7 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ─────────────────────────────────────────────
 # SECTION 6: PRICE LOGIC VALIDATION
-# ─────────────────────────────────────────────
 
 def validate_price_logic(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -219,9 +204,7 @@ def validate_price_logic(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ─────────────────────────────────────────────
 # SECTION 7: TIME GAP DETECTION
-# ─────────────────────────────────────────────
 
 def detect_time_gaps(df: pd.DataFrame, expected_freq: str = None) -> pd.DataFrame:
     """
@@ -253,9 +236,7 @@ def detect_time_gaps(df: pd.DataFrame, expected_freq: str = None) -> pd.DataFram
     return df
 
 
-# ─────────────────────────────────────────────
 # SECTION 8: SUMMARY REPORT
-# ─────────────────────────────────────────────
 
 def generate_data_summary(df: pd.DataFrame) -> dict:
     """
@@ -283,9 +264,7 @@ def generate_data_summary(df: pd.DataFrame) -> dict:
     return summary
 
 
-# ─────────────────────────────────────────────
 # SECTION 9: VISUALIZATION
-# ─────────────────────────────────────────────
 
 def plot_raw_price(df: pd.DataFrame, title: str = "Raw Price — OHLC Overview", save: bool = True):
     """
@@ -333,11 +312,7 @@ def plot_raw_price(df: pd.DataFrame, title: str = "Raw Price — OHLC Overview",
 
     plt.show()
 
-
-# ─────────────────────────────────────────────
 # MASTER FUNCTION
-# ─────────────────────────────────────────────
-
 def ingest(filepath: str, expected_freq: str = None) -> pd.DataFrame:
     """
     Full Phase 1 pipeline.
@@ -357,4 +332,5 @@ def ingest(filepath: str, expected_freq: str = None) -> pd.DataFrame:
     plot_raw_price(df)
 
     print("[TIAS] ── Phase 1 Complete. Clean DataFrame ready. ──\n")
+
     return df
